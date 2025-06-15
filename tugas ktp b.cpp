@@ -119,7 +119,7 @@ public:
     }
 };
 
-// Fungsi untuk mencari dan mengedit KTP berdasarkan NIK
+
 void cariDanEdit(vector<KTP> &daftar) {
     long long cariNik;
     cout << "Masukkan NIK yang ingin diedit: ";
@@ -155,12 +155,9 @@ int main() {
     }
     
     
-
-    // Pengurutan berdasarkan NIK
     sort(daftarKTP.begin(), daftarKTP.end(), bandingkanNIK);
 
 
-    // Tampilkan data
     cout << "\n=== DATA KTP SETELAH DIURUTKAN BERDASARKAN NIK ===\n";
     for (int i = 0; i < daftarKTP.size(); ++i) {
     daftarKTP[i].tampil();
@@ -176,10 +173,9 @@ int main() {
         cariDanEdit(daftarKTP);
     }
 
-    // Tampilkan ulang setelah edit
     cout << "\n=== DATA KTP TERBARU ===\n";
    for (int i = 0; i < daftarKTP.size(); ++i) {
-    // proses pakai daftarKTP[i]
+   	
 }
 
 
