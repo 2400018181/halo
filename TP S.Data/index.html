@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeLaundry - Premium Laundry Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-crown"></i>
+            <span>Luxe<strong>Laundry</strong></span>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#" class="nav-link active" data-page="dashboard">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-link" data-page="transaction">
+                <i class="fas fa-plus-circle"></i>
+                <span>Transaksi Baru</span>
+            </a>
+            <a href="#" class="nav-link" data-page="history">
+                <i class="fas fa-history"></i>
+                <span>Riwayat</span>
+            </a>
+            <a href="#" class="nav-link" data-page="customers">
+                <i class="fas fa-users"></i>
+                <span>Pelanggan</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="user-details">
+                    <p class="user-name">Admin</p>
+                    <p class="user-role">Manager</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Page -->
+        <section id="dashboard" class="page active">
+            <div class="page-header">
+                <div>
+                    <h1>Dashboard Overview</h1>
+                    <p class="subtitle">Selamat datang di LuxeLaundry Management System</p>
+                </div>
+                <div class="header-actions">
+                    <div class="date-display">
+                        <i class="far fa-calendar"></i>
+                        <span id="current-date"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">Laundry Baju</p>
+                        <h3 class="stat-value" id="stat-baju">Rp 0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">Cuci Sepatu</p>
+                        <h3 class="stat-value" id="stat-sepatu">Rp 0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-rug"></i>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">Cuci Karpet</p>
+                        <h3 class="stat-value" id="stat-karpet">Rp 0</h3>
+                    </div>
+                </div>
+
+                <div class="stat-card highlight">
+                    <div class="stat-icon gold">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="stat-info">
+                        <p class="stat-label">Total Pendapatan</p>
+                        <h3 class="stat-value" id="stat-total">Rp 0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Transaksi Terbaru</h2>
+                    <button class="btn-text" onclick="switchPage('history')">Lihat Semua</button>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Pelanggan</th>
+                                <th>Layanan</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                                <th>Tanggal</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-transactions">
+                            <tr>
+                                <td colspan="6" class="empty-state">Belum ada transaksi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Transaction Page -->
+        <section id="transaction" class="page">
+            <div class="page-header">
+                <div>
+                    <h1>Transaksi Baru</h1>
+                    <p class="subtitle">Buat transaksi laundry baru</p>
+                </div>
+            </div>
+
+            <!-- Service Selection -->
+            <div class="service-tabs">
+                <button class="service-tab active" data-service="baju">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Baju</span>
+                </button>
+                <button class="service-tab" data-service="selimut">
+                    <i class="fas fa-bed"></i>
+                    <span>Selimut</span>
+                </button>
+                <button class="service-tab" data-service="bedcover">
+                    <i class="fas fa-layer-group"></i>
+                    <span>Bed Cover</span>
+                </button>
+                <button class="service-tab" data-service="sepatu">
+                    <i class="fas fa-shoe-prints"></i>
+                    <span>Sepatu</span>
+                </button>
+                <button class="service-tab" data-service="karpet">
+                    <i class="fas fa-rug"></i>
+                    <span>Karpet</span>
+                </button>
+                <button class="service-tab" data-service="boneka">
+                    <i class="fas fa-teddy-bear"></i>
+                    <span>Boneka</span>
+                </button>
+                <button class="service-tab" data-service="gorden">
+                    <i class="fas fa-window-maximize"></i>
+                    <span>Gorden</span>
+                </button>
+                <button class="service-tab" data-service="bantal">
+                    <i class="fas fa-couch"></i>
+                    <span>Bantal</span>
+                </button>
+            </div>
+
+            <!-- Transaction Form -->
+            <div class="card form-card">
+                <form id="transaction-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nama Pelanggan</label>
+                            <input type="text" id="customer-name" placeholder="Masukkan nama pelanggan" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Metode Pembayaran</label>
+                            <select id="payment-method">
+                                <option value="Cash">Cash</option>
+                                <option value="Debit">Debit</option>
+                                <option value="E-Wallet">E-Wallet</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Service Inputs -->
+                    <div id="service-inputs"></div>
+
+                    <div class="form-group">
+                        <label>Deskripsi / Catatan</label>
+                        <textarea id="description" rows="3" placeholder="Catatan tambahan (opsional)"></textarea>
+                    </div>
+
+                    <!-- Delivery Option -->
+                    <div class="delivery-section">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="delivery-check">
+                            <label for="delivery-check">Butuh Layanan Antar-Jemput?</label>
+                        </div>
+                        <div id="delivery-inputs" class="hidden">
+                            <div class="form-group">
+                                <label>Jarak (km)</label>
+                                <input type="number" id="delivery-distance" step="0.1" min="0" value="0">
+                                <small>Gratis untuk jarak < 5km. Biaya tambahan Rp 15.000 + Rp 5.000/km untuk jarak>
+                                        5km</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Display -->
+                    <div class="total-display">
+                        <div class="total-label">Total Pembayaran</div>
+                        <div class="total-amount" id="total-amount">Rp 0</div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="resetTransactionForm()">Reset</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Simpan Transaksi
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- History Page -->
+        <section id="history" class="page">
+            <div class="page-header">
+                <div>
+                    <h1>Riwayat Transaksi</h1>
+                    <p class="subtitle">Kelola dan lihat semua transaksi</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-danger" onclick="undoLastTransaction()">
+                        <i class="fas fa-undo"></i>
+                        Undo Terakhir
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="search-input" placeholder="Cari transaksi...">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tanggal</th>
+                                <th>Pelanggan</th>
+                                <th>Layanan</th>
+                                <th>Deskripsi</th>
+                                <th>Metode</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-table">
+                            <tr>
+                                <td colspan="9" class="empty-state">Belum ada transaksi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customers Page -->
+        <section id="customers" class="page">
+            <div class="page-header">
+                <div>
+                    <h1>Data Pelanggan</h1>
+                    <p class="subtitle">Kelola data pelanggan dan member</p>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="openCustomerModal()">
+                        <i class="fas fa-user-plus"></i>
+                        Tambah Pelanggan
+                    </button>
+                </div>
+            </div>
+
+            <div class="customers-grid" id="customers-grid">
+                <div class="empty-state-card">
+                    <i class="fas fa-users"></i>
+                    <p>Belum ada data pelanggan</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Customer Modal -->
+    <div id="customer-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tambah Pelanggan Baru</h2>
+                <button class="modal-close" onclick="closeCustomerModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="customer-form">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="new-customer-name" required>
+                </div>
+                <div class="form-group">
+                    <label>Nomor Telepon</label>
+                    <input type="tel" id="new-customer-phone">
+                </div>
+                <div class="form-group">
+                    <label>Alamat</label>
+                    <textarea id="new-customer-address" rows="3"></textarea>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="new-customer-member">
+                    <label for="new-customer-member">Daftarkan sebagai Member</label>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeCustomerModal()">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
